@@ -1,0 +1,124 @@
+<body style="color: olive">
+
+
+<h1>
+
+
+My music <h3>This is a compilation of my best songs. Hope you injoy!</h3> 
+</h1>
+</body>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Player</title>
+  <style>
+    .button {
+      background-color: darkyellow;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .progress-container {
+      width: 100%;
+      background-color: #f3f3f3;
+      height: 20px;
+      margin-top: 20px;
+    }
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #4caf50;
+    }
+    #albumArt {
+      display: none;
+      margin-bottom: 20px;
+      width: 200px; /* Change the width as needed */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="audioPlayer" controls preload="auto">
+  <source id="audioSource" src="https://raw.githubusercontent.com/srockwell3033/audio/main/Shine.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div>
+  <button class="button" onclick="playAudio()">Play</button>
+  <button class="button" onclick="pauseAudio()">Pause</button>
+  <button class="button" onclick="stopAudio()">Stop</button>
+</div>
+
+<img id="albumArt" src="https://raw.githubusercontent.com/srockwell3033/audio/main/Screenshot%202024-12-02%20184730.png" alt="Album Art">
+
+<div>
+  <label for="songSelect">Choose a song:</label>
+  <select id="songSelect" onchange="changeSong()">
+    <option value="https://raw.githubusercontent.com/srockwell3033/audio/main/Shine.mp3">Shine</option>
+    <option value="https://raw.githubusercontent.com/srockwell3033/audio/main/Going%20to%20space%20(3).mp3">Going to space</option>
+    <option value="https://raw.githubusercontent.com/srockwell3033/audio/main/Stress%20-%20Cubus%20OST.mp3">Stress - Cubus OST</option>
+    <option value="https://raw.githubusercontent.com/srockwell3033/audio/main/Untitled%20song%20(67).mp3">Untitled song 67</option>
+    <option value="https://raw.githubusercontent.com/srockwell3033/audio/main/---_WE1RD_---%20(2).mp3">---_WE1RD_---</option>
+  </select>
+</div>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<script>
+let audioPlayer = document.getElementById('audioPlayer');
+let progressBar = document.getElementById('progressBar');
+let albumArt = document.getElementById('albumArt');
+
+audioPlayer.ontimeupdate = function() {
+  let percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  progressBar.style.width = percentage + '%';
+};
+
+function playAudio() {
+  audioPlayer.play();
+}
+
+function pauseAudio() {
+  audioPlayer.pause();
+}
+
+function stopAudio() {
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
+}
+
+function changeSong() {
+  let songSelect = document.getElementById('songSelect');
+  let audioSource = document.getElementById('audioSource');
+  audioSource.src = songSelect.value;
+  audioPlayer.load();
+
+  if (
+    songSelect.value === "https://raw.githubusercontent.com/srockwell3033/audio/main/Shine.mp3" ||
+    songSelect.value === "https://raw.githubusercontent.com/srockwell3033/audio/main/Stress%20-%20Cubus%20OST.mp3" ||
+    songSelect.value === "https://raw.githubusercontent.com/srockwell3033/audio/main/Untitled%20song%20(67).mp3"
+  ) {
+    albumArt.style.display = "block";
+  } else {
+    albumArt.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
+<br><br><br><br>
+<a href="https://www.example.com"
+<button>
+back
+</button>
